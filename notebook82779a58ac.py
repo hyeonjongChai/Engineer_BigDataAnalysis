@@ -86,23 +86,23 @@ from xgboost import XGBRFClassifier, XGBClassifier
 
 # help(RandomForestClassifier)
 RF = RandomForestClassifier()
-# XGB = XGBClassifier()
-# XGBRF = XGBRFClassifier()
+XGB = XGBClassifier()
+XGBRF = XGBRFClassifier()
 
 RF.fit(X_train, y_train)
 print(RF.score(X_train, y_train))
 
-# XGB.fit(X_train, y_train)
-# print(XGB.score(X_train, y_train))
+XGB.fit(X_train, y_train)
+print(XGB.score(X_train, y_train))
 
-# XGBRF.fit(X_train, y_train)
-# print(XGBRF.score(X_train, y_train))
+XGBRF.fit(X_train, y_train)
+print(XGBRF.score(X_train, y_train))
 
-pred = RF.predict_proba(X_test)[:,1]
+pred = XGBRF.predict_proba(X_test)[:,1]
 pred
 
 submission = pd.DataFrame({'id': test_id, 'TravelInsurance': pred})
 submission
-submission.to_csv('TravelInsurance_Predict_Proba', index = False)
+submission.to_csv('TravelInsurance_Predict_Proba_3', index = False)
 
-pd.read_csv('TravelInsurance_Predict_Proba')
+pd.read_csv('TravelInsurance_Predict_Proba_3')
